@@ -35,3 +35,5 @@ npm-debug.log
 
 # Elm package and build artefacts
 /assets/elm/elm-stuff
+
+*.secret.exs

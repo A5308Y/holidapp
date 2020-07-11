@@ -35,7 +35,7 @@ window.liveSocket = liveSocket
 import { Elm } from "../elm/src/Main.elm"
 
 var node = document.getElementById("app");
-var app = Elm.Main.init({ node: node });
+var app = Elm.Main.init({ node: node, flags: OpenCageDataApiKey });
 
 app.ports.requestCoordinates.subscribe(function(_) {
   var options = {enableHighAccuracy: true, timeout: 10000, maximumAge: 0 };

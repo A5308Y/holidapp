@@ -1,10 +1,7 @@
-1. Create Elixir backend
-  1. Secure OpenCageData API KEY
-  1. User accounts
+  1. Create User accounts
     1. To keep track of Urlaubstage
     1. Implement github OAuth with https://github.com/scrogson/oauth2
   1. Some kind of notification for Robin to request Robins signature
-
 1. Improvement: Handle "no input yet" correctly in all cases
   1. Ensure confirmation is reset if confirmed data changes
   1. Allow to change generated data
@@ -26,9 +23,14 @@
 1. Create TimeData as a Record
 1. Limited Selection for allowed state shorthands for users
 1. Use Task.attempt to get current time and zone
+1. Set up Docker container for deployment
+1. Connect to time tracking to calculate monthly work hour balance
 
 
-1. Different Status bars for
+
+1. Create Elixir backend ✅
+  1. Secure OpenCageData API KEY ✅
+1. Different Status bars for ✅
   1. Location Data ✅
   1. Vacation Days ✅
   1. Filled out Form ✅

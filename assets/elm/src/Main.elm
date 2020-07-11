@@ -36,16 +36,16 @@ type Msg
     | VacationDaysConfirmed Bool
 
 
-main : Program () Model Msg
+main : Program String Model Msg
 main =
     Browser.element { init = init, view = view, update = update, subscriptions = subscriptions }
 
 
-init : flags -> ( Model, Cmd Msg )
-init _ =
+init : String -> ( Model, Cmd Msg )
+init openCageDataApiKey =
     ( { form = Form.init
       , currentTime = Nothing
-      , location = Location.init
+      , location = Location.init openCageDataApiKey
       , vacationDays = RemoteData.NotAsked
       , timeZone = Nothing
       , isVacationDaysConfirmed = False
@@ -53,7 +53,7 @@ init _ =
     , Cmd.batch
         [ Task.perform CurrentTimeZoneReceived Time.here
         , Task.perform CurrentTimeReceived Time.now
-        , Cmd.map LocationMsg (Location.nextCommand Location.init)
+        , Cmd.map LocationMsg (Location.nextCommand (Location.init openCageDataApiKey))
         ]
     )
 

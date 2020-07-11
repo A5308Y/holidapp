@@ -63,14 +63,16 @@ type GeneratedData
 type alias LocationData =
     { manualData : ManualLocationData
     , generatedData : GeneratedData
+    , openCageDataApiKey : String
     }
 
 
-init : Location
-init =
+init : String -> Location
+init openCageDataApiKey =
     Location
         { manualData = emptyManualLocationData
         , generatedData = UnknownLocation
+        , openCageDataApiKey = openCageDataApiKey
         }
 
 
@@ -164,7 +166,7 @@ nextCommand (Location locationData) =
 
         CoordinatesKnown ( latitude, longitude ) ->
             Http.get
-                { url = openCageDataUrl latitude longitude
+                { url = openCageDataUrl locationData.openCageDataApiKey latitude longitude
                 , expect = Http.expectJson CityDataReceived cityDataDecoder
                 }
 
@@ -178,8 +180,8 @@ nextCommand (Location locationData) =
             Cmd.none
 
 
-openCageDataUrl : Float -> Float -> String
-openCageDataUrl latitude longitude =
+openCageDataUrl : String -> Float -> Float -> String
+openCageDataUrl openCageDataApiKey latitude longitude =
     Url.Builder.crossOrigin
         "https://api.opencagedata.com"
         [ "geocode", "v1", "json" ]
@@ -371,11 +373,6 @@ subscriptions =
     [ coordinateReceiver LocationCoordinatesReceived
     , locationBlockedReceiver LocationBlockReceived
     ]
-
-
-openCageDataApiKey : String
-openCageDataApiKey =
-    Debug.log "This needs to be secured!!" "c60127a70e9a475da52f105992f3a45f"
 
 
 statusColumn : Location -> Element Msg
