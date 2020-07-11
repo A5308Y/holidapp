@@ -1,0 +1,53 @@
+"{
+  "documentation":"https://opencagedata.com/api",
+  "licenses":[{"name":"see attribution guide", "url":"https://opencagedata.com/credits"}],
+  "rate":{"limit":2500, "remaining":2499, "reset":1591660800},
+  "results":[
+    {
+      "annotations":{
+        "DMS":{"lat":"51\\u00b0 19' 4.57212'' N", "lng":"12\\u00b0 22' 13.54764'' E"},
+        "MGRS":"33UUS1676288465",
+        "Maidenhead":"JO61eh46kh",
+        "Mercator":{"x":1377069.962, "y":6644350.548},
+        "OSM":{"edit_url":"https://www.openstreetmap.org/edit?way=40025664#map=16/51.31794/12.37043", "note_url":"https://www.openstreetmap.org/note/new#map=16/51.31794/12.37043&layers=N", "url":"https://www.openstreetmap.org/?mlat=51.31794&mlon=12.37043#map=16/51.31794/12.37043"},
+        "UN_M49":{"regions":{"DE":"276", "EUROPE":"150", "WESTERN_EUROPE":"155", "WORLD":"001"}, "statistical_groupings":["MEDC"] },
+        "callingcode":49,
+        "currency":{"alternate_symbols":[], "decimal_mark":", ", "html_entity":"&#x20AC;", "iso_code":"EUR", "iso_numeric":"978", "name":"Euro", "smallest_denomination":1, "subunit":"Cent", "subunit_to_unit":100, "symbol":"\\u20ac", "symbol_first":1, "thousands_separator":"."},
+        "flag":"\\ud83c\\udde9\\ud83c\\uddea",
+        "geohash":"u30gcqpueuv05gbxytwn",
+        "qibla":134.14,
+        "roadinfo":{"drive_on":"right", "road":"Steinstra\\u00dfe", "speed_in":"km/h"},
+        "sun":{"rise":{"apparent":1591585020, "astronomical":0, "civil":1591582260, "nautical":1591578060},
+        "set":{"apparent":1591644180, "astronomical":0, "civil":1591646940, "nautical":1591651140}},
+        "timezone":{"name":"Europe/Berlin", "now_in_dst":1, "offset_sec":7200, "offset_string":"+0200", "short_name":"CEST"},
+        "what3words":{"words":"scared.proud.legwork"}
+      },
+      "bounds":{"northeast":{"lat":51.3180234, "lng":12.3705669}, "southwest":{"lat":51.3178483, "lng":12.370293}},
+      "components":{
+        "ISO_3166-1_alpha-2":"DE",
+        "ISO_3166-1_alpha-3":"DEU",
+        "_category":"building",
+        "_type":"building",
+        "city":"Leipzig",
+        "city_district":"S\\u00fcd",
+        "continent":"Europe",
+        "country":"Germany",
+        "country_code":"de",
+        "house_number":"21",
+        "political_union":"European Union",
+        "postcode":"04275",
+        "road":"Steinstra\\u00dfe",
+        "state":"Saxony",
+        "suburb":"S\\u00fcdvorstadt"
+      },
+      "confidence":10,
+      "formatted":"Steinstra\\u00dfe 21, 04275 Leipzig, Germany",
+      "geometry":{"lat":51.3179367, "lng":12.3704299}
+    }
+  ],
+  "status":{"code":200, "message":"OK"},
+  "stay_informed":{"blog":"https://blog.opencagedata.com", "twitter":"https://twitter.com/OpenCage"},
+  "thanks":"For using an OpenCage API",
+  "timestamp":{"created_http":"Mon, 08 Jun 2020 04:19:46 GMT", "created_unix":1591589986},
+  "total_results":1
+}"
