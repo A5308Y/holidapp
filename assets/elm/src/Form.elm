@@ -334,10 +334,7 @@ outputColumn timeZone location vacationDays currentDate form =
                     VacationDays.daysUsed timeZone formData.requestedTimeRange vacationDays
             in
             Element.column [ Element.spacing 10, Element.width (Element.fillPortion 2 |> Element.maximum 1500), Element.alignRight ]
-                [ Element.image [ Element.alignRight ]
-                    { src = "public/codingrobin_logo.png"
-                    , description = "Logo von Coding Robin"
-                    }
+                [ codingRobinLogo
                 , Element.el [ Element.Font.size 22, Element.Font.bold ] (Element.text "Urlaubsantrag")
                 , case usedDaysResult of
                     Ok usedDays ->
@@ -357,10 +354,7 @@ outputColumn timeZone location vacationDays currentDate form =
                     VacationDays.daysUsed timeZone formData.requestedTimeRange vacationDays
             in
             Element.column [ Element.spacing 10, Element.width (Element.fillPortion 2 |> Element.maximum 1500), Element.alignRight ]
-                [ Element.image [ Element.alignRight ]
-                    { src = "public/codingrobin_logo.png"
-                    , description = "Logo von Coding Robin"
-                    }
+                [ codingRobinLogo
                 , Element.el [ Element.Font.size 22, Element.Font.bold ] (Element.text "Urlaubsantrag")
                 , case usedDaysResult of
                     Ok usedDays ->
@@ -369,6 +363,15 @@ outputColumn timeZone location vacationDays currentDate form =
                     Err message ->
                         Element.el [ Element.Font.size 16 ] (Element.text message)
                 ]
+
+
+codingRobinLogo : Element Msg
+codingRobinLogo =
+    Element.image
+        [ Element.alignRight ]
+        { src = "images/codingrobin_logo.png"
+        , description = "Logo von Coding Robin"
+        }
 
 
 daysLeftString : Time.Zone -> VacationDays -> CompletedFormData -> String
