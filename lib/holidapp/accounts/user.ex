@@ -6,6 +6,7 @@ defmodule Holidapp.Accounts.User do
     field :email, :string
     field :provider, :string
     field :token, :string
+    has_one :location, Holidapp.HolidayRequest.Location
 
     timestamps()
   end

@@ -14,7 +14,7 @@
     </script>
   </head>
   <body>
-    <%= if @conn.assigns[:user] do %>
+    <%= if @conn.assigns[:current_user] do %>
       <li><%= link "Logout", to: Routes.auth_path(@conn, :signout, "github") %></li>
     <% else %>
       <li><%= link "Sign in with Github", to: Routes.auth_path(@conn, :request, "github") %></li>

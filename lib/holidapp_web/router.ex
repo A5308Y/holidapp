@@ -12,6 +12,8 @@ defmodule HolidappWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+
+    resources("/location", HolidappWeb.LocationController, except: [:new, :edit], singleton: true)
   end
 
   scope "/", HolidappWeb do

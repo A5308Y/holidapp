@@ -46,6 +46,7 @@ type Msg
     | CharacterEnteredForCityName String
     | StateShorthandSelected StateShorthand
     | LocationEntryConfirmed Bool
+    | BackendUserLocationReceived (Result Http.Error String)
 
 
 type Location
@@ -64,6 +65,7 @@ type alias LocationData =
     { manualData : ManualLocationData
     , generatedData : GeneratedData
     , openCageDataApiKey : String
+    , fetchedUserLocation : String
     }
 
 
@@ -73,6 +75,7 @@ init openCageDataApiKey =
         { manualData = emptyManualLocationData
         , generatedData = UnknownLocation
         , openCageDataApiKey = openCageDataApiKey
+        , fetchedUserLocation = ""
         }
 
 
@@ -157,12 +160,27 @@ update msg ((Location locationData) as location) =
                     in
                     Location locationData
 
+        BackendUserLocationReceived result ->
+            case result of
+                Ok string ->
+                    Location { locationData | fetchedUserLocation = string }
+
+                Err _ ->
+                    location
+
+
+fetchBackendUserLocation =
+    Http.get
+        { url = "/location"
+        , expect = Http.expectString BackendUserLocationReceived
+        }
+
 
 nextCommand : Location -> Cmd Msg
 nextCommand (Location locationData) =
     case locationData.generatedData of
         UnknownLocation ->
-            requestCoordinates True
+            Cmd.batch [ requestCoordinates True, fetchBackendUserLocation ]
 
         CoordinatesKnown ( latitude, longitude ) ->
             Http.get
@@ -377,7 +395,13 @@ subscriptions =
 
 statusColumn : Location -> Element Msg
 statusColumn location =
-    Element.column [ Element.spacing 20, Element.Font.size 12, Element.alignTop, Element.width Element.fill ] (statusElements location)
+    Element.column
+        [ Element.spacing 20
+        , Element.Font.size 12
+        , Element.alignTop
+        , Element.width Element.fill
+        ]
+        (statusElements location)
 
 
 statusBar : StatusBar.Status -> String -> Element Msg
@@ -424,6 +448,7 @@ statusElements ((Location locationData) as location) =
                     case locationData.generatedData of
                         Blocked ->
                             [ statusBar StatusBar.Error "Location service not reachable."
+                            , Element.el [] (Element.text locationData.fetchedUserLocation)
                             , inputForm location
                             ]
 

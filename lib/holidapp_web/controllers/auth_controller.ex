@@ -2,6 +2,12 @@ defmodule HolidappWeb.AuthController do
   use HolidappWeb, :controller
   plug Ueberauth
 
+  def callback(%{assigns: %{ueberauth_failure: _fails}} = conn, _params) do
+    conn
+    |> put_flash(:error, "Failed to authenticate.")
+    |> redirect(to: "/")
+  end
+
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, params) do
     user_params = %{
       token: auth.credentials.token,
@@ -16,7 +22,7 @@ defmodule HolidappWeb.AuthController do
   def signout(conn, _params) do
     conn
     |> configure_session(drop: true)
-    |> redirect(external: root_url(conn))
+    |> redirect(to: "/")
   end
 
   defp signin(conn, changeset) do
@@ -24,13 +30,13 @@ defmodule HolidappWeb.AuthController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "You have been signed in.")
-        |> put_session(:user_id, user.id)
-        |> redirect(external: root_url(conn))
+        |> put_session(:current_user, user)
+        |> redirect(to: "/")
 
       {:error, _reason} ->
         conn
         |> put_flash(:error, "Error signing in.")
-        |> redirect(external: root_url(conn))
+        |> redirect(to: "/")
     end
   end
 
@@ -41,19 +47,6 @@ defmodule HolidappWeb.AuthController do
 
       user ->
         {:ok, user}
-    end
-  end
-
-  defp root_url(conn) do
-    host =
-      conn.host
-      |> String.split(".")
-      |> Enum.at(1)
-
-    if conn.port do
-      "#{conn.scheme}://#{host}:#{conn.port}"
-    else
-      "#{conn.scheme}://#{host}"
     end
   end
 end
