@@ -22,8 +22,11 @@ defmodule HolidappWeb.LocationController do
     render(conn, "show.json", location: HolidayRequest.get_user_location!(current_user.id))
   end
 
-  def update(conn, %{"id" => id, "location" => location_params}) do
-    location = HolidayRequest.get_location!(id)
+  def update(conn, %{"location" => location_params}) do
+    conn = fetch_session(conn, :current_user)
+    current_user = get_session(conn, :current_user)
+
+    location = HolidayRequest.get_user_location!(current_user.id)
 
     with {:ok, %Location{} = location} <-
            HolidayRequest.update_location(location, location_params) do
@@ -31,8 +34,11 @@ defmodule HolidappWeb.LocationController do
     end
   end
 
-  def delete(conn, %{"id" => id}) do
-    location = HolidayRequest.get_location!(id)
+  def delete(conn) do
+    conn = fetch_session(conn, :current_user)
+    current_user = get_session(conn, :current_user)
+
+    location = HolidayRequest.get_user_location!(current_user.id)
 
     with {:ok, %Location{}} <- HolidayRequest.delete_location(location) do
       send_resp(conn, :no_content, "")
