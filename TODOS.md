@@ -8,7 +8,9 @@
 1. Set up Docker container for deployment
 1. Move all credentials to .env
 1. Allow to select a single day
-
+1. Ensure production mode for all parts
+1. Use Env variable in JS code directly
+1. Use release functionality for deployment
 
 ## Frontend
 

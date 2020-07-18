@@ -3,17 +3,18 @@ version: '3'
 services:
   holidapp:
     env_file:
-      - .env-dev
+      - .env-prod
     build:
       context: .
     ports:
-      - "4000:4000"
+      - "80:4000"
     depends_on:
       - db
     image: a5308y/holidapp
+    restart: always
   db:
     env_file:
-      - .env-dev
+      - .env-prod
     image: postgres:9.6
     restart: always
     volumes:

@@ -11,10 +11,14 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
-## Learn more
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+# Deployment
+
+Create a droplet with `docker-machine create --digitalocean-size "s-2vcpu-4gb" --driver digitalocean --digitalocean-access-token PERSONAL_ACCESS_TOKEN holidapp-prod`
+Followed by `eval $(docker-machine env holidapp-prod)` to connect to the droplet.
+and `docker-compose -f docker-compose.prod.yml up -d` to install and start the app.
+Navigate to to the ip taken from the URL displayed by `docker-machine ls`. (http://xxx.xxx.xxx.xxx)
+
+# Tear down
+
+Run `docker-machine rm holidapp-prod` to tear down the digital ocean instance.

@@ -37,4 +37,5 @@ npm-debug.log
 /assets/elm/elm-stuff
 
 *.secret.exs
-.env
+.env-dev
+.env-prod

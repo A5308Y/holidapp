@@ -169,6 +169,7 @@ update msg ((Location locationData) as location) =
                     location
 
 
+fetchBackendUserLocation : Cmd Msg
 fetchBackendUserLocation =
     Http.get
         { url = "/location"
