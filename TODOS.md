@@ -5,12 +5,14 @@
 1. Allow to save location
 1. Keep track of Urlaubstage
 1. Connect to time tracking to calculate monthly work hour balance
-1. Set up Docker container for deployment
 1. Move all credentials to .env
 1. Allow to select a single day
 1. Ensure production mode for all parts
 1. Use Env variable in JS code directly
-1. Use release functionality for deployment
+1. Use release functionality (phoenix) for deployment
+1. Don't expose port 4000?
+1. Remove waiting for postgres?
+1. Rename data to docker_volumes?
 
 ## Frontend
 
@@ -37,6 +39,7 @@
 
 
 
+1. Set up Docker container for deployment ✅
 1. Limited Selection for allowed state shorthands for users ✅
 1. Create User accounts ✅
 1. Implement OAuth with https://medium.com/@rrugamba/setting-up-google-oauth-in-phoenix-9167595f5fb7 or https://dreamconception.com/tech/phoenix-full-fledged-api-in-five-minutes and/or https://levelup.gitconnected.com/how-to-do-oauth-with-github-in-elixir-phoenix-1-5-c2bd5dc05cb1 ✅

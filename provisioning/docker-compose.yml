@@ -4,8 +4,6 @@ services:
   holidapp:
     env_file:
       - .env-prod
-    ports:
-      - "4000:4000"
     depends_on:
       - db
     image: a5308y/holidapp

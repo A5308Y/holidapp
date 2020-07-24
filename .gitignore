@@ -39,3 +39,4 @@ npm-debug.log
 *.secret.exs
 .env-dev
 .env-prod
+.DS_Store
