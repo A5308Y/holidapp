@@ -154,11 +154,7 @@ update msg ((Location locationData) as location) =
                     updateGeneratedCityData cityData location
 
                 Err message ->
-                    let
-                        _ =
-                            Debug.log "Failure fetching city data" message
-                    in
-                    Location locationData
+                    Location { locationData | generatedData = Failure ("Failure fetching city data: " ++ message) }
 
         BackendUserLocationReceived result ->
             case result of

@@ -8,11 +8,11 @@
 1. Move all credentials to .env
 1. Allow to select a single day
 1. Ensure production mode for all parts
-1. Use Env variable in JS code directly
-1. Use release functionality (phoenix) for deployment
-1. Don't expose port 4000?
-1. Remove waiting for postgres?
-1. Rename data to docker_volumes?
+  1. Use release functionality (phoenix) for deployment
+  1. 1. Remove all Debug entries everywhere and compile with --optimize
+1. Ask backend for OpenCageData-key and renew it, because it was visible in the frontend
+1. Request data with api key from backend
+
 
 ## Frontend
 
@@ -23,9 +23,9 @@
   1. Allow to provide data manually for everything that could not be fetched
     1. Vacation Days
     1. Location Data
+1. Show error message if clicking a disabled button
 1. Some kind of notification for Robin to request Robins signature
 1. Validate Signature Presence
-1. Remove all Debug entries everywhere and compile with --optimize (depends on backend, because API key)
 1. Design
   1. Make layout work for small and large screens
   1. Make it look cool
@@ -76,6 +76,8 @@
 1. Use Elm UI ✅
 1. Nebendran Ausgabe anzeigen ✅
 1. Remove Packages ✅
+1. Don't expose port 4000? ✅
+1. Remove waiting for postgres? ✅ (Didn't do anything. It's an official postgres tool.)
 
 Possible MVP Workflows:
 

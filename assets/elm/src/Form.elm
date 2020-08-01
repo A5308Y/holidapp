@@ -121,10 +121,6 @@ updateformHelper msg partialFormData form =
                     form
 
         DisabledCompleteFormButtonClicked ->
-            let
-                _ =
-                    Debug.todo
-            in
             updateData form partialFormData
 
         CharacterEnteredForName name ->
