@@ -17,6 +17,6 @@ services:
     image: postgres:9.6
     restart: always
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/dev_data
 volumes:
   pgdata:
