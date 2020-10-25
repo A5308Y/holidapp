@@ -12,10 +12,12 @@
   1. 1. Remove all Debug entries everywhere and compile with --optimize
 1. Ask backend for OpenCageData-key and renew it, because it was visible in the frontend
 1. Request data with api key from backend
+1. Only install necessary packages for production
 
 
 ## Frontend
 
+1. Reduce number of requests
 1. Improvement: Handle "no input yet" correctly in all cases
   1. Ensure confirmation is reset if confirmed data changes
   1. Allow to change generated location data
