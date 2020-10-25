@@ -24,6 +24,7 @@ import Element exposing (Element)
 import Element.Font
 import Element.Input
 import Http
+import HttpHelper
 import Json.Decode
 import StateShorthand exposing (StateShorthand)
 import StatusBar
@@ -153,16 +154,16 @@ update msg ((Location locationData) as location) =
                 Ok cityData ->
                     updateGeneratedCityData cityData location
 
-                Err message ->
-                    Location { locationData | generatedData = Failure ("Failure fetching city data: " ++ message) }
+                Err httpError ->
+                    Location { locationData | generatedData = Failure ("Failure fetching city data: " ++ HttpHelper.messageFromHttpError httpError) }
 
         BackendUserLocationReceived result ->
             case result of
                 Ok string ->
                     Location { locationData | fetchedUserLocation = string }
 
-                Err _ ->
-                    location
+                Err httpError ->
+                    Location { locationData | fetchedUserLocation = HttpHelper.messageFromHttpError httpError }
 
 
 fetchBackendUserLocation : Cmd Msg
