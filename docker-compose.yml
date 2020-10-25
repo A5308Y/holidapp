@@ -11,6 +11,8 @@ services:
     depends_on:
       - db
     image: a5308y/holidapp
+    volumes:
+      - .:/app
   db:
     env_file:
       - .env-dev

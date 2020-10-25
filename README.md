@@ -1,6 +1,7 @@
 # Holidapp
 
-To start Holidapp run `docker-compose up`.
+To start Holidapp locally for development purposes run `docker-compose up`.
+If you want to work on the frontend run `yarn --cwd assets run watch` as well (in a different terminal).
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
