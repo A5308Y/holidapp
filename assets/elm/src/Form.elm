@@ -330,8 +330,7 @@ outputColumn timeZone location vacationDays currentDate form =
                     VacationDays.daysUsed timeZone formData.requestedTimeRange vacationDays
             in
             Element.column [ Element.spacing 10, Element.width (Element.fillPortion 2 |> Element.maximum 1500), Element.alignRight ]
-                [ codingRobinLogo
-                , Element.el [ Element.Font.size 22, Element.Font.bold ] (Element.text "Urlaubsantrag")
+                [ Element.el [ Element.Font.size 22, Element.Font.bold ] (Element.text "Urlaubsantrag")
                 , case usedDaysResult of
                     Ok usedDays ->
                         completeApplicationForm usedDays location timeZone vacationDays currentDate formData
@@ -350,8 +349,7 @@ outputColumn timeZone location vacationDays currentDate form =
                     VacationDays.daysUsed timeZone formData.requestedTimeRange vacationDays
             in
             Element.column [ Element.spacing 10, Element.width (Element.fillPortion 2 |> Element.maximum 1500), Element.alignRight ]
-                [ codingRobinLogo
-                , Element.el [ Element.Font.size 22, Element.Font.bold ] (Element.text "Urlaubsantrag")
+                [ Element.el [ Element.Font.size 22, Element.Font.bold ] (Element.text "Urlaubsantrag")
                 , case usedDaysResult of
                     Ok usedDays ->
                         completeApplicationForm usedDays location timeZone vacationDays currentDate formData
@@ -359,15 +357,6 @@ outputColumn timeZone location vacationDays currentDate form =
                     Err message ->
                         Element.el [ Element.Font.size 16 ] (Element.text message)
                 ]
-
-
-codingRobinLogo : Element Msg
-codingRobinLogo =
-    Element.image
-        [ Element.alignRight ]
-        { src = "images/codingrobin_logo.png"
-        , description = "Logo von Coding Robin"
-        }
 
 
 daysLeftString : Time.Zone -> VacationDays -> CompletedFormData -> String
@@ -435,13 +424,22 @@ companyDataColumn =
         , Element.row [ Element.alignRight ]
             [ Element.column [ Element.alignRight, Element.spacing 5 ]
                 [ Element.el [ Element.Font.size 16, Element.alignRight, Element.Font.bold ] (Element.text "Steuernummer")
-                , Element.el [ Element.Font.size 16, Element.alignRight ] (Element.text "23 / 438 / 61085")
+                , Element.el [ Element.Font.size 16, Element.alignRight ] (Element.text "37 / 230 / 51210")
                 ]
             ]
         , Element.row [ Element.alignRight ]
             [ Element.column [ Element.alignRight, Element.spacing 5 ]
                 [ Element.el [ Element.Font.size 16, Element.alignRight, Element.Font.bold ] (Element.text "USt.-IdNr.")
-                , Element.el [ Element.Font.size 16, Element.alignRight ] (Element.text "DE264168609")
+                , Element.el [ Element.Font.size 16, Element.alignRight ] (Element.text "DE363290552")
+                ]
+            ]
+        , Element.row [ Element.alignRight ]
+            [ Element.column [ Element.alignRight, Element.spacing 5 ]
+                [ Element.el [ Element.Font.size 16, Element.alignRight, Element.Font.bold ] (Element.text "Adresse")
+                , Element.el [ Element.Font.size 16, Element.alignRight ] (Element.text "BitBirds GmbH")
+                , Element.el [ Element.Font.size 16, Element.alignRight ] (Element.text "℅ Robin Mehner")
+                , Element.el [ Element.Font.size 16, Element.alignRight ] (Element.text "Boxhagener Str. 76B")
+                , Element.el [ Element.Font.size 16, Element.alignRight ] (Element.text "10245 Berlin")
                 ]
             ]
         ]
